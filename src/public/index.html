@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" placeholder="name" />
+      <br />
+      <br />
+      <input type="text" placeholder="email" />
+      <br />
+      <br />
+      <button id="get">GET</button>
+      <button id="post">POST</button>
+      <script>
+        const get = document.getElementById("get");
+        const post = document.getElementById("post");
+        const url = "http://localhost:8383/info ";
+        get.addEventListener("click", getinfo);
+        async function getinfo(e) {
+          e.preventDefault();
+          const res = await fetch(url, {
+            method: "GET",
+          });
+          console.log(res);
+          const data = await res.json();
+          input.value = data.info;
+        }
+        async function postinfo() {}
+      </script>
+    </form>
+  </body>
+</html>
